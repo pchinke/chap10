@@ -45,17 +45,17 @@ jobs:
     runs-on: ubuntu-20.04
     needs: test
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - run: docker run --rm -v $(pwd):/src hysnsec/bandit -r /src -f json -o /src/bandit-output.json
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: Bandit
           path: bandit-output.json
         if: always()                        # what is this for?
 
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.6'
 
