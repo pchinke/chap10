@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-20.04
     needs: test
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - run: docker run --user $(id -u):$(id -g) -v $(pwd):/src --rm hysnsec/bandit -r /src -f json -o /src/bandit-output.json
 
@@ -55,7 +55,7 @@ jobs:
           path: bandit-output.json
         if: always()                        # what is this for?
 
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v3
         with:
           python-version: '3.6'
 
